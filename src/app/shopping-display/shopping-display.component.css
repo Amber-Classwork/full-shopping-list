@@ -51,10 +51,9 @@
 .grid {
 display: grid;
 grid-template-columns: auto auto auto;
-/* grid-template-columns: 25% 25% 25% 25%; */
 }
 
-.grid ol{
+.grid ol li{
   display:grid;
   grid-template-columns: repeat(4, 1fr);
   max-width: 1240px;
