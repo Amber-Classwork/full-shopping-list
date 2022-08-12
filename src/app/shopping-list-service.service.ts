@@ -3,12 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, catchError, of } from 'rxjs';
 import { Items } from './Models/items';
 import { APIResponse } from './Models/api-response';
+import { Category } from './Models/category';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingListServiceService {
   private API_URL = "http://localhost:3000/shopping_list";
+
+  private CATEGORY_URL = "http://localhost:3000/categories"
 
   private _handleHttpErrors(retVal: any) {
     return (err: any) => {
@@ -32,10 +35,14 @@ export class ShoppingListServiceService {
   }
 
   updateItem(id:string, data:Items): Observable<APIResponse<Items>>{
-    return this.http.put<APIResponse<Items>>(this.API_URL + '/' + id, data).pipe(catchError(this._handleHttpErrors(new Items())));
+    return this.http.patch<APIResponse<Items>>(this.API_URL + '/' + id, data).pipe(catchError(this._handleHttpErrors(new Items())));
   }
 
   deleteItem(id:string): Observable<APIResponse<Items>>{
     return this.http.delete<APIResponse<Items>>(this.API_URL + '/' + id).pipe(catchError(this._handleHttpErrors(new Items())));
+  }
+
+  getAllCategories():Observable<APIResponse<Category[]>>{
+    return this.http.get<APIResponse<Category[]>>(this.CATEGORY_URL)
   }
 }
