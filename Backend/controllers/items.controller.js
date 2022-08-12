@@ -52,3 +52,18 @@ exports.getItemById = async (req, res) => {
 		JSONResponse.error(res, 'Failure handling item model.', error, 500)
 	}
 }
+
+/**
+ * ### Description
+ * Updates the user that matches the id that was passed to the route.
+ */
+exports.updateItemById = async (req,res, next)=>{
+	try{
+		const id = req.params.id;
+		console.log("editing")
+		const item = await Items.findByIdAndUpdate(id, req.body, {new: true});
+		JSONResponse.success(res, "Success", item, 200)
+	}catch(error){
+		JSONResponse.error(res, "Failed", error, 404);
+	}
+}
