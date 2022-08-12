@@ -21,7 +21,7 @@ router
 	.get(CategoryController.getAllCategories);
 
 router
-	.router("/category/:id")
+	.router("/categories/:id")
 	.get(CategoryController.getCategoryById)
 	.patch(CategoryController.updateCategory)
 	.delete(CategoryController.deleteCategory)
