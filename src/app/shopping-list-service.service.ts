@@ -45,4 +45,7 @@ export class ShoppingListServiceService {
   getAllCategories():Observable<APIResponse<Category[]>>{
     return this.http.get<APIResponse<Category[]>>(this.CATEGORY_URL)
   }
+  createCategory(data: Partial<Category>):Observable<APIResponse<Category>>{
+    return this.http.post<APIResponse<Category>>(this.CATEGORY_URL, data)
+  }
 }

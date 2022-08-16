@@ -25,7 +25,7 @@ import { ShoppingEditComponent } from './shopping-edit/shopping-edit.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [ShoppingListServiceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
